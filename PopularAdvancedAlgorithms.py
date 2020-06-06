@@ -215,6 +215,7 @@ n = len(val)
 print(knapSack(W, wt, val, n)) 
 
 """Hamming distance between two Integers"""
+""""https://www.geeksforgeeks.org/hamming-distance-between-two-integers/"""
 """Given two integers, the task is to find the hamming distance between two integers. Hamming Distance between two integers is the number of bits which are different at same position in both numbers."""
 # Function to calculate hamming distance  
 def hammingDistance(n1, n2) : 
@@ -230,8 +231,7 @@ def hammingDistance(n1, n2) :
 n1 = 9
 n2 = 14
 print(hammingDistance(9, 14)) 
-  
-# this code is contributed by Smitha Dinesh Semwal 
+
 
 
 
