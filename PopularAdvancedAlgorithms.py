@@ -5,7 +5,7 @@ Created on Sun May  3 23:50:58 2020
 @author: Edgar
 """
 
-#Dijkstra's Algorithm 
+"""Dijkstra's Algorithm """
 """Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks."""
 """The difference between Dijkstra and BFS is that with BFS we have a simple FIFO queue, 
 and the next node to visit is the first node that was added in the queue. But, using Dijkstra, 
@@ -74,7 +74,7 @@ class Graph():
   
         self.printSolution(dist) 
         
-#Bellman-ford algorithm
+"""Bellman-ford algorithm"""
 """Does the same thing as Dijkstra's algorithm, but it is more versatile."""
 """Dijkstra’s algorithm is a Greedy algorithm and time complexity is O(VLogV) (with the use of Fibonacci heap). 
 Dijkstra doesn’t work for Graphs with negative weight edges, Bellman-Ford works for such graphs. 
@@ -111,9 +111,9 @@ def BellmanFord(self, src):
                           
         # print all distance  
         self.printArr(dist)  
-#Floyd's cyccle detection algorithm
-"""Algorithm for detecting loops in linked list and graphs using 2 pointers"""
-"""This also detects the node at which the loop starts so the loop can be removed"""
+"""Floyd's cyccle detection algorithm
+Algorithm for detecting loops in linked list and graphs using 2 pointers
+This also detects the node at which the loop starts so the loop can be removed"""
 #https://leetcode.com/problems/linked-list-cycle-ii/
 def detectCycle(head):
     if head is None:
@@ -143,21 +143,21 @@ def detectCycle(head):
             
         return pt1
 
-"""Lowest common subsequence """
-    """LCS is a classic problem in computer science that finds the length of the 
+"""Lowest common subsequence
+    LCS is a classic problem in computer science that finds the length of the 
     longest subsequence in a string
 
     A subsequence is a sequence of characers in a string that come one after another but not necesarily 
     exactly in space after. Ex: in 'edgar', a subsequence is e,a,r."""
 
-"""Solution:"""
-"""https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/"""
-"""https://www.youtube.com/watch?v=NnD96abizww"""
-"""This is the solution, using Dynamic Programming, which involves essentially creating a matrix with both words as memory"""
-"""second row and second column (which are the first row and first column that are not headers) are filled with 0's, or in the code below, None values"""
-"""in each intersection, we essentially create substrings for both words up to the characters at that point, and calculate the maximum subsequence length up to that point using values at previous character combination cells."""
-"""For better explanation, watch the video"""
-"""This matrix is very similar to the 01 knapsack dynamic programming matrix, but not exactly the same"""
+"""Solution:
+https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+https://www.youtube.com/watch?v=NnD96abizww"
+This is the solution, using Dynamic Programming, which involves essentially creating a matrix with both words as memory
+second row and second column (which are the first row and first column that are not headers) are filled with 0's, or in the code below, None values
+n each intersection, we essentially create substrings for both words up to the characters at that point, and calculate the maximum subsequence length up to that point using values at previous character combination cells.
+For better explanation, watch the video
+his matrix is very similar to the 01 knapsack dynamic programming matrix, but not exactly the same"""
 def lcs(X, Y): 
     # find the length of the strings 
     m = len(X) 
@@ -182,14 +182,14 @@ def lcs(X, Y):
 
 #print(lcs("edgar", "elapr"))
 
-"""0/1 Knapsack Problem"""
-"""https://www.youtube.com/watch?v=8LusJS5-AGo&t=232s"""
-"""You want to fill a bag with the most value with the least weight"""
-"""The 01 version of the knapsack problem means you can either pick the item or not pick it, but not split the item."""
-"""If you can split the item, you just solve it using greedy, which means you sort by val/wt and pick until you reach a point where an item does not fit, so you split that last item"""
-"""If you do not use dynamic programming and you just sort by val/wt, and not split the last item, it will give you a local optima solution but not a global optimal"""
-"""In order to get the local optima solution, we use dynamic programming"""
-"""We create a value vs weight matrix, similar to the LCS one but not exactly the same, comparing max weight and value combinations up to that point"""
+"""0/1 Knapsack Problem
+https://www.youtube.com/watch?v=8LusJS5-AGo&t=232s
+You want to fill a bag with the most value with the least weight
+The 01 version of the knapsack problem means you can either pick the item or not pick it, but not split the item
+If you can split the item, you just solve it using greedy, which means you sort by val/wt and pick until you reach a point where an item does not fit, so you split that last item
+If you do not use dynamic programming and you just sort by val/wt, and not split the last item, it will give you a local optima solution but not a global optimal
+In order to get the local optima solution, we use dynamic programming
+We create a value vs weight matrix, similar to the LCS one but not exactly the same, comparing max weight and value combinations up to that point"""
 """Constraints: """
 """the weights must be sorted"""
 def knapSack(W, wt, val, n): 
@@ -214,9 +214,9 @@ W = 50
 n = len(val) 
 print(knapSack(W, wt, val, n)) 
 
-"""Hamming distance between two Integers"""
-""""https://www.geeksforgeeks.org/hamming-distance-between-two-integers/"""
-"""Given two integers, the task is to find the hamming distance between two integers. Hamming Distance between two integers is the number of bits which are different at same position in both numbers."""
+"""Hamming distance between two Integers
+https://www.geeksforgeeks.org/hamming-distance-between-two-integers/
+Given two integers, the task is to find the hamming distance between two integers. Hamming Distance between two integers is the number of bits which are different at same position in both numbers."""
 # Function to calculate hamming distance  
 def hammingDistance(n1, n2) : 
     x = n1 ^ n2  
@@ -231,6 +231,60 @@ def hammingDistance(n1, n2) :
 n1 = 9
 n2 = 14
 print(hammingDistance(9, 14)) 
+
+"""Disjoint Set (Union Find)
+https://www.geeksforgeeks.org/union-find/
+https://www.youtube.com/watch?v=ID00PMy0-vE
+Union-Find Algorithm can be used to check whether an undirected graph contains cycle or not.
+This method assumes that the graph doesn’t contain any self-loops.
+We can keep track of the subsets in a 1D array, in this case named parent[i]
+NOTE: the implementation of union() and find() is naive and takes O(n) time in worst case. """
+
+from collections import defaultdict 
+   
+#This class represents a undirected graph using adjacency list representation 
+class Graph: 
+   
+    def __init__(self,vertices): 
+        self.V= vertices #No. of vertices 
+        self.graph = defaultdict(list) # default dictionary to store graph 
+   
+  
+    # function to add an edge to graph 
+    def addEdge(self,u,v): 
+        self.graph[u].append(v) 
+   
+    # A utility function to find the subset of an element i 
+    def find_parent(self, parent,i): 
+        if parent[i] == -1: 
+            return i 
+        if parent[i]!= -1: 
+             return self.find_parent(parent,parent[i]) 
+  
+    # A utility function to do union of two subsets 
+    def union(self,parent,x,y): 
+        x_set = self.find_parent(parent, x) 
+        y_set = self.find_parent(parent, y) 
+        parent[x_set] = y_set 
+  
+    # The main function to check whether a given graph 
+    # contains cycle or not 
+    def isCyclic(self): 
+          
+        # Allocate memory for creating V subsets and 
+        # Initialize all subsets as single element sets 
+        parent = [-1]*(self.V) 
+  
+        # Iterate through all edges of graph, find subset of both 
+        # vertices of every edge, if both subsets are same, then 
+        # there is cycle in graph. 
+        for i in self.graph: 
+            for j in self.graph[i]: 
+                x = self.find_parent(parent, i)  
+                y = self.find_parent(parent, j) 
+                if x == y: 
+                    return True
+                self.union(parent,x,y) 
 
 
 
