@@ -199,7 +199,7 @@ def knapSack(W, wt, val, n):
     for i in range(n + 1): 
         for w in range(W + 1): 
             if i == 0 or w == 0: 
-                K[i][w] = 0 #the first column will be 0 because w will be 0 and nothing can be put inside the back. We also make the first row to 0s for symmetry and easier handling.
+                K[i][w] = 0 #the first column will be 0 because w will be 0 and nothing can be put inside the back. We also make the first row to 0s for symmetry and easier handling.z
             elif wt[i-1] <= w: #note since the first column and row will be 0s, the values of the matrix weights and value locations will be offset by 1 to the weight and value arrays. Thus matrix K[i][j] corresponds to wt[i-1] and val[i-1]
                 K[i][w] = max(val[i-1]  + K[i-1][w-wt[i-1]],  K[i-1][w]) #here we evaluate the maximum value we can get at this specific i,j cell. We get max of the value we selected plus the value of the cell of the matrix at the remaining weight WITHOUT SELECTING THIS ITEM (previous row), vs the best value we can get without including this item (the val of this weight column at the previous value row, which is K[i-1][w])
             else: 
@@ -216,7 +216,8 @@ print(knapSack(W, wt, val, n))
 
 """Hamming distance between two Integers
 https://www.geeksforgeeks.org/hamming-distance-between-two-integers/
-Given two integers, the task is to find the hamming distance between two integers. Hamming Distance between two integers is the number of bits which are different at same position in both numbers."""
+Given two integers, the task is to find the hamming distance between two integers. 
+The Hamming Distance between two integers is the number of bits which are different at same position in both numbers."""
 # Function to calculate hamming distance  
 def hammingDistance(n1, n2) : 
     x = n1 ^ n2  
@@ -234,11 +235,12 @@ print(hammingDistance(9, 14))
 
 """Disjoint Set (Union Find)
 https://www.geeksforgeeks.org/union-find/
-https://www.youtube.com/watch?v=ID00PMy0-vE
 Union-Find Algorithm can be used to check whether an undirected graph contains cycle or not.
 This method assumes that the graph doesn’t contain any self-loops.
 We can keep track of the subsets in a 1D array, in this case named parent[i]
-NOTE: the implementation of union() and find() is naive and takes O(n) time in worst case. """
+NOTE: the implementation of union() and find() is naive and takes O(n) time in worst case. 
+These methods can be improved to O(Logn) using Union by Rank or Height.
+https://www.youtube.com/watch?v=ID00PMy0-vE"""
 
 from collections import defaultdict 
    
