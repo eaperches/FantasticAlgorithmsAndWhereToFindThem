@@ -111,8 +111,8 @@ def BellmanFord(self, src):
                           
         # print all distance  
         self.printArr(dist)  
-"""Floyd's cyccle detection algorithm
-Algorithm for detecting loops in linked list and graphs using 2 pointers
+"""Floyd's cyccle detection algorithm"""
+"""Algorithm for detecting loops in linked list and graphs using 2 pointers
 This also detects the node at which the loop starts so the loop can be removed"""
 #https://leetcode.com/problems/linked-list-cycle-ii/
 def detectCycle(head):
@@ -143,8 +143,8 @@ def detectCycle(head):
             
         return pt1
 
-"""Lowest common subsequence
-    LCS is a classic problem in computer science that finds the length of the 
+"""Lowest common subsequence"""
+    """LCS is a classic problem in computer science that finds the length of the 
     longest subsequence in a string
 
     A subsequence is a sequence of characers in a string that come one after another but not necesarily 
@@ -287,6 +287,25 @@ class Graph:
                 if x == y: 
                     return True
                 self.union(parent,x,y) 
+                
+                
+"""Kadane's Algorithm"""
+"""Finds subarray with maximum sum using dynamic programming"""
+x = [1,2,-5,4,9]
+def maxSubArray(a):        
+    max_ending_here = 0
+    for i,num in enumerate(a):             
+        max_ending_here = max_ending_here + num 
+        if i == 0:
+            max_so_far = max_ending_here
+        else:
+            if max_ending_here > max_so_far: 
+                max_so_far = max_ending_here
+        if max_ending_here < 0: 
+            max_ending_here = 0   
+    return max_so_far 
+
+print(maxSubArray(x))
 
 
 
