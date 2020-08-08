@@ -191,7 +191,7 @@ If you do not use dynamic programming and you just sort by val/wt, and not split
 In order to get the local optima solution, we use dynamic programming
 We create a value vs weight matrix, similar to the LCS one but not exactly the same, comparing max weight and value combinations up to that point"""
 """Constraints: """
-"""the weights must be sorted"""
+"""the items must be sorted by weights"""
 def knapSack(W, wt, val, n): 
     K = [[0 for x in range(W + 1)] for x in range(n + 1)] 
   
@@ -220,10 +220,10 @@ Given two integers, the task is to find the hamming distance between two integer
 The Hamming Distance between two integers is the number of bits which are different at same position in both numbers."""
 # Function to calculate hamming distance  
 def hammingDistance(n1, n2) : 
-    x = n1 ^ n2  
+    x = n1 ^ n2   #this gives all the bits that are different between two integers (ie Sets each bit to 1 if only one of two bits is 1)
     setBits = 0
   
-    while (x > 0) : 
+    while (x > 0) : #this counts the set bits in x
         setBits += x & 1
         x >>= 1
       
@@ -290,7 +290,22 @@ class Graph:
                 
                 
 """Kadane's Algorithm"""
-"""Finds subarray with maximum sum using dynamic programming"""
+"""Finds max sum in a subarray using dynamic programming"""
+
+"""General idea is :
+    Initialize:
+    max_so_far = 0
+    max_ending_here = 0
+
+Loop for each element of the array
+  (a) max_ending_here = max_ending_here + a[i]
+  (b) if(max_so_far < max_ending_here)
+            max_so_far = max_ending_here
+  (c) if(max_ending_here < 0)
+            max_ending_here = 0
+return max_so_far
+"""
+
 x = [1,2,-5,4,9]
 def maxSubArray(a):        
     max_ending_here = 0
